@@ -55,6 +55,11 @@ def pascal(row, column):
     6
     """
     "*** YOUR CODE HERE ***"
+    if column == 0: 
+        return 1
+    elif row == 0:
+        return 0
+    return pascal(row - 1, column) + pascal(row - 1, column -1) 
 
 
 def double_eights(n):
@@ -77,5 +82,7 @@ def double_eights(n):
     >>> # ban iteration
     >>> check(HW_SOURCE_FILE, 'double_eights', ['While', 'For'])
     True
-    """
-    "*** YOUR CODE HERE ***"
+    """    "*** YOUR CODE HERE ***"
+    last_digit, second_last = n % 10, n//10 % 10
+    return False if n < 10 else (last_digit == 8 and second_last == 8) or double_eights(n // 10)
+    
